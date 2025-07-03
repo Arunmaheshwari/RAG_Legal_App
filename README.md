@@ -68,8 +68,9 @@ streamlit run app.py
 ```
 
 
-# 📁 Project Structure
+## 📁 Project Structure
 
+```text
 📦 Rag Legal document chatbot
 ├── app.py
 ├── .env
@@ -84,29 +85,14 @@ streamlit run app.py
 │   └── retriever.py
 └── data/
     └── AI Training Document.pdf
+```
 
 
 ---
 
-# 🔁 Project Workflow
-flowchart TD
+## 🔁 Project Workflow
 
-    A[📥 Ingestion Phase] --> A1[📄 Load PDF via PyPDF]
-    A1 --> A2[✂️ Chunk Text using LangChain]
-    A2 --> A3[🧠 Generate Embeddings (MiniLM)]
-    A3 --> A4[💾 Store Chunks + Vectors in FAISS DB]
-
-    B[📎 Augmentation Phase] --> B1[🔍 User Query Input (via Streamlit)]
-    B1 --> B2[🔎 Retrieve Relevant Chunks from FAISS]
-    B2 --> B3[📚 Merge Context with User Query]
-
-    C[🤖 Generation Phase] --> C1[🧠 Pass Merged Context to Ollama LLM]
-    C1 --> C2[💬 Generate Response]
-    C2 --> C3[📤 Stream Output in Chat UI]
-
-    A --> B
-    B --> C
-
+![RAG Workflow](assests\project_workflow.png)
 
 # 🔍 Stages Explained
  - Ingestion: Load PDFs → Chunk → Embed → Store in FAISS.
