@@ -34,3 +34,59 @@ A Retrieval-Augmented Generation (RAG) chatbot built using **LangChain**, **FAIS
 ```bash
 git clone https://github.com/Arunmaheshwari/RAG_Legal_App.git
 cd RAG_Legal_App or RAG_Application
+
+
+### 2. Install Dependencies
+```bash
+pip install -r requirements.txt
+
+
+
+### 3. Configure Environment
+
+Create a .env file with:
+
+```bash
+EMBED_MODEL=BAAI/bge-small-en
+DB_PATH=vectordb/faiss_index
+LLM_MODEL = tinyllama:latest
+
+
+### 4. Start Ollama & Pull Model
+```bash
+ollama pull tinyllama or tinyllama:latest
+ollama run tinyllama or tinyllama:latest
+
+
+### 5. Run the App
+```bash
+streamlit run app.py
+
+
+
+
+
+
+
+# 📁 Project Structure
+
+📦 Rag Legal document chatbot
+├── app.py
+├── .env
+├── requirements.txt
+├── chunks/
+│   └── chunks.py
+├── vectordb/
+│   └── vectordf.py
+├── src/
+│   ├── ollama_llm.py
+│   ├── prompt_template.py
+│   └── retriever.py
+└── data/
+    └── AI Training Document.pdf
+
+
+
+
+# ✍️ Author
+Arun Maheshwari
