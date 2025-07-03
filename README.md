@@ -34,15 +34,12 @@ A Retrieval-Augmented Generation (RAG) chatbot built using **LangChain**, **FAIS
 ```bash
 git clone https://github.com/Arunmaheshwari/RAG_Legal_App.git
 cd RAG_Legal_App or RAG_Application
-
----
+```
 
 ### 2. Install Dependencies
 ```bash
 pip install -r requirements.txt
-
-
----
+```
 
 
 ### 3. Configure Environment
@@ -53,9 +50,8 @@ Create a .env file with:
 EMBED_MODEL=BAAI/bge-small-en
 DB_PATH=vectordb/faiss_index
 LLM_MODEL = tinyllama:latest
-
-
----
+```
+💡 You can also use other models like llama3, mistral, etc., by updating the LLM_MODEL in the .env.
 
 
 ### 4. Start Ollama & Pull Model
@@ -63,18 +59,13 @@ LLM_MODEL = tinyllama:latest
 ollama pull tinyllama or tinyllama:latest
 ollama run tinyllama or tinyllama:latest
 
-
----
+```
 
 
 ### 5. Run the App
 ```bash
 streamlit run app.py
-
-
-
-
----
+```
 
 
 # 📁 Project Structure
@@ -96,6 +87,36 @@ streamlit run app.py
 
 
 ---
+
+# 🔁 Project Workflow
+flowchart TD
+
+    A[📥 Ingestion Phase] --> A1[📄 Load PDF via PyPDF]
+    A1 --> A2[✂️ Chunk Text using LangChain]
+    A2 --> A3[🧠 Generate Embeddings (MiniLM)]
+    A3 --> A4[💾 Store Chunks + Vectors in FAISS DB]
+
+    B[📎 Augmentation Phase] --> B1[🔍 User Query Input (via Streamlit)]
+    B1 --> B2[🔎 Retrieve Relevant Chunks from FAISS]
+    B2 --> B3[📚 Merge Context with User Query]
+
+    C[🤖 Generation Phase] --> C1[🧠 Pass Merged Context to Ollama LLM]
+    C1 --> C2[💬 Generate Response]
+    C2 --> C3[📤 Stream Output in Chat UI]
+
+    A --> B
+    B --> C
+
+
+# 🔍 Stages Explained
+ - Ingestion: Load PDFs → Chunk → Embed → Store in FAISS.
+
+ - Augmentation: Take user query → Retrieve relevant chunks.
+
+ - Generation: Combine context + query → Run through LLM → Generate answer.
+
+---
+
 
 
 # ✍️ Author
